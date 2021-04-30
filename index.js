@@ -5,13 +5,13 @@ import dotenv from "dotenv";
 dotenv.config();
 const MongoClient = mongodb.MongoClient
 
-const port = process.env.PORT | 8000;
+const port = process.env.PORT || 8000;
 
 MongoClient.connect(
   process.env.RESTREVIEWS_DB_URI,
   {
     poolSize: 50,
-    wtimeout:2500,
+    wtimeout: 2500,
     useNewUrlParser: true
   }
 )
@@ -21,6 +21,6 @@ MongoClient.connect(
 })
 .then(async client => {
   app.listen(port, () => {
-    console.log("Listening on port ${port}");
+    console.log(`Listening on port ${port}`);
   });
 })
